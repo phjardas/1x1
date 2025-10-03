@@ -11,13 +11,7 @@ type GameState =
   | { state: "ended"; result: GameResult };
 
 export default function App() {
-  const [state, setState] = useState<GameState>({
-    state: "running",
-    game: new Game(
-      { operators: ["*"], minOperandValue: 0, maxOperandValue: 10 },
-      10
-    ),
-  });
+  const [state, setState] = useState<GameState>({ state: "setup" });
 
   const startGame = useCallback(
     (spec: ProblemSpec, problemCount: number) => {

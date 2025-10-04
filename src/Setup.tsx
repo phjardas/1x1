@@ -7,7 +7,7 @@ export default function Setup({
 }) {
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl text-slate-800">1x1 Trainer</h1>
+      <h1 className="text-4xl text-slate-800 text-center">1×1 Trainer</h1>
       <button
         onClick={() =>
           startGame(

@@ -23,8 +23,8 @@ export default function App() {
   );
 
   return (
-    <div className="bg-slate-400 min-h-screen py-4 flex justify-center items-center">
-      <div className="max-w-xs bg-slate-300 rounded-xl p-6 shadow-lg">
+    <div className="max-w-xs mx-auto pt-10 md:pt-20 px-4 sm:px-0">
+      <div className="bg-slate-200 rounded-xl p-6 shadow-lg">
         {state.state === "setup" && <Setup startGame={startGame} />}
         {state.state === "running" && (
           <GameRunning
@@ -32,7 +32,12 @@ export default function App() {
             onGameEnd={(result) => setState({ state: "ended", result })}
           />
         )}
-        {state.state === "ended" && <GameFinished result={state.result} />}
+        {state.state === "ended" && (
+          <GameFinished
+            result={state.result}
+            resetGame={() => setState({ state: "setup" })}
+          />
+        )}
       </div>
     </div>
   );

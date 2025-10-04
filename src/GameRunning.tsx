@@ -34,7 +34,7 @@ function CurrentProblem({
   if (!problem) return null;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-10 pt-4">
       <ProblemInput key={problem.id} problem={problem} onSubmit={onSubmit} />
       <p className="text-xs text-slate-500 text-end">
         Aufgabe {game.currentProblemIndex + 1} von {game.problems.length}
@@ -54,7 +54,7 @@ function ProblemInput({
 
   return (
     <form
-      className="flex items-baseline gap-2 text-2xl"
+      className="flex justify-center items-baseline gap-2 text-3xl"
       onSubmit={(e) => {
         e.preventDefault();
         if (!isNaN(value)) onSubmit(value);
@@ -77,7 +77,12 @@ function ProblemInput({
       ) : (
         <span>{problem.result}</span>
       )}
-      <button type="submit">&rarr;</button>
+      <button
+        type="submit"
+        className="bg-blue-700 text-white rounded px-2 py-1"
+      >
+        &rarr;
+      </button>
     </form>
   );
 }
@@ -95,7 +100,7 @@ function NumberInput({
       onChange={(e) =>
         onChange(parseInt(e.target.value.replace(/[^\d]/g, ""), 10))
       }
-      className="border border-slate-500 bg-white rounded px-2 py-1 w-12 text-right"
+      className="border border-slate-500 bg-white rounded px-2 py-1 w-16 text-right"
       inputMode="numeric"
       autoFocus
     />

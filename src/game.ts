@@ -35,12 +35,22 @@ export class Game {
   private createResultIfFinished(): GameResult | undefined {
     if (this.currentProblemIndex === this.problems.length) {
       const finishedAt = Date.now();
+      const problems = createProblemResults(this.problems, this.solutions);
+      const correctCount = problems.filter((p) => p.correct).length;
+      const correctRate = correctCount / problems.length;
+      const duration = finishedAt - this.startedAt;
+      const durationPerProblem = duration / problems.length;
 
       return {
         spec: this.spec,
-        problems: createProblemResults(this.problems, this.solutions),
+        problems,
         startedAt: this.startedAt,
         finishedAt,
+        problemCount: problems.length,
+        correctCount,
+        correctRate,
+        duration,
+        durationPerProblem,
       };
     }
   }
@@ -72,6 +82,11 @@ export type GameResult = {
   problems: readonly ProblemResult[];
   startedAt: number;
   finishedAt: number;
+  problemCount: number;
+  correctCount: number;
+  correctRate: number;
+  duration: number;
+  durationPerProblem: number;
 };
 
 export type ProblemResult = Problem & { solution: number; correct: boolean };

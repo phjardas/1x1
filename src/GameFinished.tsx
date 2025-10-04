@@ -7,25 +7,21 @@ export default function GameFinished({
   result: GameResult;
   resetGame: () => void;
 }) {
-  const numberCorrect = result.problems.filter((p) => p.correct).length;
-  const duration = result.finishedAt - result.startedAt;
-
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-4xl text-slate-800">Training beendet!</h1>
+      <h1 className="text-4xl text-slate-800">Geschafft!</h1>
       <p>
-        Du hast {numberCorrect.toLocaleString()} von{" "}
-        {result.problems.length.toLocaleString()} Aufgaben richtig gelöst. Das
-        sind{" "}
-        {(numberCorrect / result.problems.length).toLocaleString(undefined, {
+        Du hast {result.correctCount.toLocaleString()} von{" "}
+        {result.problemCount.toLocaleString()} Aufgaben richtig gelöst. Das sind{" "}
+        {result.correctRate.toLocaleString(undefined, {
           style: "percent",
         })}
         .
       </p>
       <p>
-        Dafür hast du {Math.round(duration / 1000).toLocaleString()} Sekunden
-        gebraucht. Das sind ca.{" "}
-        {(duration / 1000 / result.problems.length).toLocaleString(undefined, {
+        Dafür hast du {Math.round(result.duration / 1000).toLocaleString()}{" "}
+        Sekunden gebraucht. Das sind ca.{" "}
+        {(result.durationPerProblem / 1000).toLocaleString(undefined, {
           maximumFractionDigits: 1,
         })}{" "}
         Sekunden pro Aufgabe.

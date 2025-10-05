@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { saveGameResult } from "./db";
 import { type GameResult } from "./game";
 
 export default function GameFinished({
@@ -7,6 +9,10 @@ export default function GameFinished({
   result: GameResult;
   resetGame: () => void;
 }) {
+  useEffect(() => {
+    saveGameResult(result);
+  }, [result]);
+
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-4xl text-slate-800">Geschafft!</h1>

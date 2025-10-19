@@ -13,8 +13,8 @@ export default function Setup({
           startGame(
             {
               operators: ["*"],
-              minOperandValue: 1,
-              maxOperandValue: 10,
+              minOperandValue: 2,
+              maxOperandValue: 9,
             },
             10
           )

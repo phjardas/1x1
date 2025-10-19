@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { saveGameResult } from "./db";
 import { type GameResult } from "./game";
 
-console.log("confetti", confetti);
-
 export default function GameFinished({
   result,
   resetGame,

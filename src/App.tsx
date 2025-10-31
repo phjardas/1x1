@@ -23,8 +23,8 @@ export default function App() {
   );
 
   return (
-    <div className="max-w-xs mx-auto pt-10 md:pt-20 px-4 sm:px-0">
-      <div className="bg-slate-200 rounded-xl p-6 shadow-lg">
+    <div className="max-w-md mx-auto pt-10 md:pt-20 px-4 sm:px-0">
+      <div className="bg-white rounded-3xl p-8 shadow-2xl border-4 border-white/50">
         {state.state === "setup" && <Setup startGame={startGame} />}
         {state.state === "running" && (
           <GameRunning

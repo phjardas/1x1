@@ -20,10 +20,18 @@ export default function Setup({
   );
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={submit}>
-      <h1 className="text-4xl text-slate-800 text-center">1×1 Trainer</h1>
-      <div className="flex gap-2 items-baseline">
-        <label htmlFor="count">Anzahl der Aufgaben:</label>
+    <form className="flex flex-col gap-6" onSubmit={submit}>
+      <div className="text-center">
+        <div className="text-6xl mb-3 animate-float">🎯</div>
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          1×1 Trainer
+        </h1>
+        <p className="text-lg text-slate-700 mt-2">Werde zum Mathe-Champion!</p>
+      </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="count" className="text-lg font-semibold text-slate-700">
+          Wie viele Aufgaben möchtest du üben?
+        </label>
         <input
           type="text"
           id="count"
@@ -31,15 +39,15 @@ export default function Setup({
           onChange={(e) => setCount(Number(e.target.value))}
           inputMode="numeric"
           required
-          className="border border-slate-500 bg-white rounded px-2 py-1 w-12 text-right"
+          className="border-3 border-purple-400 bg-white rounded-xl px-4 py-3 text-2xl text-center font-bold text-purple-700 focus:border-pink-400 focus:outline-none focus:ring-4 focus:ring-pink-200 transition-all"
         />
       </div>
       <button
         type="submit"
-        className="rounded bg-blue-700 px-4 py-2 text-white hover:bg-blue-800 disabled:bg-gray-700/30 shadow"
+        className="rounded-xl bg-gradient-to-r from-green-400 to-blue-500 px-6 py-4 text-white text-xl font-bold hover:from-green-500 hover:to-blue-600 disabled:from-gray-400 disabled:to-gray-500 shadow-lg transform hover:scale-105 transition-all active:scale-95"
         disabled={isNaN(count) || count <= 0}
       >
-        Training starten
+        🚀 Los geht's!
       </button>
     </form>
   );

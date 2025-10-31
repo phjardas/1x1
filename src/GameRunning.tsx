@@ -16,11 +16,14 @@ export function GameRunning({
 
   const onSubmit = useCallback(
     (value: number, isCorrect: boolean) => {
+      // Register solution immediately to capture correct timestamp
+      const result = game.registerSolution(value);
+
+      // Show feedback animation
       setFeedback(isCorrect ? "correct" : "incorrect");
 
       // Wait 1 second to show feedback before moving on
       setTimeout(() => {
-        const result = game.registerSolution(value);
         setFeedback(null);
         if (result) return onGameEnd(result);
         setStep((s) => s + 1);

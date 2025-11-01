@@ -1,5 +1,6 @@
 import { FormEvent, useCallback, useState } from "react";
 import { type Operator, type ProblemSpec } from "./model";
+import { AvatarGreeting } from "./Avatar";
 
 export default function Setup({
   startGame,
@@ -21,12 +22,13 @@ export default function Setup({
 
   return (
     <form className="flex flex-col gap-6" onSubmit={submit}>
-      <div className="text-center">
-        <div className="text-6xl mb-3 animate-float">🎯</div>
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+      <AvatarGreeting name="Greta" />
+
+      <div className="text-center mt-2">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
           1×1 Trainer
         </h1>
-        <p className="text-lg text-slate-700 mt-2">Werde zum Mathe-Champion!</p>
+        <p className="text-base text-slate-600 mt-1">Werde zum Mathe-Champion!</p>
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="count" className="text-lg font-semibold text-slate-700">

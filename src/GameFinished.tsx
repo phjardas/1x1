@@ -94,28 +94,28 @@ function getPerformanceMessage(correctRate: number): {
   if (correctRate >= 0.95) {
     return {
       emoji: "🌈",
-      title: "Wunderbar!",
+      title: "Danke fürs Mitmachen!",
       message: "Du hast dir so viel Mühe gegeben und bist bei jeder Aufgabe dabeigeblieben!",
       color: "text-yellow-500",
     };
   } else if (correctRate >= 0.85) {
     return {
       emoji: "⭐",
-      title: "Klasse!",
+      title: "Du warst konzentriert!",
       message: "Ich sehe, wie konzentriert du gearbeitet hast!",
       color: "text-green-500",
     };
   } else if (correctRate >= 0.7) {
     return {
       emoji: "🌱",
-      title: "Schön!",
+      title: "Du lernst dazu!",
       message: "Du übst fleißig und lernst mit jeder Aufgabe dazu!",
       color: "text-blue-500",
     };
   } else if (correctRate >= 0.5) {
     return {
       emoji: "🎈",
-      title: "Gut!",
+      title: "Du bist dabeigeblieben!",
       message: "Du hast durchgehalten und jede Aufgabe probiert!",
       color: "text-orange-500",
     };

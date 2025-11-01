@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { saveGameResult } from "./db";
 import { type GameResult } from "./game";
+import { AvatarFarewell } from "./Avatar";
 
 export default function GameFinished({
   result,
@@ -13,18 +14,19 @@ export default function GameFinished({
     saveGameResult(result);
   }, [result]);
 
-  const { emoji, title, message, color } = getPerformanceMessage(
-    result.correctRate
-  );
+  const { emoji, title, message, color, gretaMessage, gretaMood } =
+    getPerformanceMessage(result.correctRate);
 
   return (
     <div className="flex flex-col gap-6 relative">
       {result.correctRate >= 0.8 && <ConfettiEffect />}
 
+      <AvatarFarewell name="Greta" mood={gretaMood} message={gretaMessage} />
+
       <div className="text-center">
-        <div className="text-8xl mb-4 animate-bounce-in">{emoji}</div>
-        <h1 className={`text-5xl font-bold mb-2 ${color}`}>{title}</h1>
-        <p className="text-lg text-slate-700">{message}</p>
+        <div className="text-6xl mb-3 animate-bounce-in">{emoji}</div>
+        <h1 className={`text-4xl font-bold mb-2 ${color}`}>{title}</h1>
+        <p className="text-base text-slate-700">{message}</p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -90,13 +92,19 @@ function getPerformanceMessage(correctRate: number): {
   title: string;
   message: string;
   color: string;
+  gretaMessage: string;
+  gretaMood: "happy" | "excited" | "encouraging" | "celebrating";
 } {
   if (correctRate >= 0.95) {
     return {
       emoji: "🌈",
       title: "Danke fürs Mitmachen!",
-      message: "Du hast dir so viel Mühe gegeben und bist bei jeder Aufgabe dabeigeblieben!",
+      message:
+        "Du hast dir so viel Mühe gegeben und bist bei jeder Aufgabe dabeigeblieben!",
       color: "text-yellow-500",
+      gretaMessage:
+        "Wow! Du bist ein echter Mathe-Star! Ich bin so stolz auf dich! 🌟",
+      gretaMood: "celebrating",
     };
   } else if (correctRate >= 0.85) {
     return {
@@ -104,6 +112,9 @@ function getPerformanceMessage(correctRate: number): {
       title: "Du warst konzentriert!",
       message: "Ich sehe, wie konzentriert du gearbeitet hast!",
       color: "text-green-500",
+      gretaMessage:
+        "Super gemacht! Deine Konzentration hat sich wirklich ausgezahlt! ⭐",
+      gretaMood: "excited",
     };
   } else if (correctRate >= 0.7) {
     return {
@@ -111,6 +122,9 @@ function getPerformanceMessage(correctRate: number): {
       title: "Du lernst dazu!",
       message: "Du übst fleißig und lernst mit jeder Aufgabe dazu!",
       color: "text-blue-500",
+      gretaMessage:
+        "Toll! Du machst jeden Tag Fortschritte. Weiter so! 🌱",
+      gretaMood: "happy",
     };
   } else if (correctRate >= 0.5) {
     return {
@@ -118,6 +132,9 @@ function getPerformanceMessage(correctRate: number): {
       title: "Du bist dabeigeblieben!",
       message: "Du hast durchgehalten und jede Aufgabe probiert!",
       color: "text-orange-500",
+      gretaMessage:
+        "Ich finde es super, dass du nicht aufgegeben hast! Übung macht den Meister! 💪",
+      gretaMood: "encouraging",
     };
   } else {
     return {
@@ -125,6 +142,9 @@ function getPerformanceMessage(correctRate: number): {
       title: "Danke fürs Üben!",
       message: "Du bist drangeblieben, auch als es schwierig wurde!",
       color: "text-purple-500",
+      gretaMessage:
+        "Du bist mutig! Jede Übung bringt dich weiter. Ich glaube an dich! 🌟",
+      gretaMood: "encouraging",
     };
   }
 }

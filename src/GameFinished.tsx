@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { saveGameResult } from "./db";
 import { type GameResult } from "./game";
+import { useGameHistoryRepository } from "./hooks/useGameHistoryRepository";
 
 export default function GameFinished({
   result,
@@ -9,9 +9,11 @@ export default function GameFinished({
   result: GameResult;
   resetGame: () => void;
 }) {
+  const repository = useGameHistoryRepository();
+
   useEffect(() => {
-    saveGameResult(result);
-  }, [result]);
+    repository.save(result);
+  }, [result, repository]);
 
   const { emoji, title, message, color } = getPerformanceMessage(
     result.correctRate

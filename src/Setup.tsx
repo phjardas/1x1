@@ -22,7 +22,13 @@ export default function Setup({
   return (
     <form className="flex flex-col gap-6" onSubmit={submit}>
       <div className="text-center">
-        <div className="text-6xl mb-3 animate-float">🎯</div>
+        <div className="flex justify-center mb-4">
+          <img
+            src="/logo.svg"
+            alt="1×1 Trainer Logo"
+            className="w-24 h-24 animate-float"
+          />
+        </div>
         <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
           1×1 Trainer
         </h1>

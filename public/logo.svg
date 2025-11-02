@@ -1,0 +1,44 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f472b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="symbolGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e7ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle with gradient -->
+  <circle cx="100" cy="100" r="90" fill="url(#bgGradient)" filter="url(#shadow)"/>
+
+  <!-- Inner circle for depth -->
+  <circle cx="100" cy="100" r="75" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Multiplication symbol (×) -->
+  <g transform="translate(100, 100)" fill="url(#symbolGradient)" filter="url(#shadow)">
+    <!-- First diagonal line of × -->
+    <rect x="-8" y="-45" width="16" height="90" rx="8" transform="rotate(45)"/>
+    <!-- Second diagonal line of × -->
+    <rect x="-8" y="-45" width="16" height="90" rx="8" transform="rotate(-45)"/>
+  </g>
+
+  <!-- Decorative stars -->
+  <g fill="#fbbf24" opacity="0.8">
+    <circle cx="35" cy="50" r="4"/>
+    <circle cx="165" cy="60" r="5"/>
+    <circle cx="40" cy="145" r="3"/>
+    <circle cx="160" cy="150" r="4"/>
+  </g>
+
+  <!-- Sparkle effect -->
+  <g fill="#ffffff" opacity="0.9">
+    <path d="M 155 95 L 157 100 L 162 100 L 158 103 L 160 108 L 155 105 L 150 108 L 152 103 L 148 100 L 153 100 Z"/>
+    <path d="M 50 110 L 51.5 113 L 54.5 113 L 52 115 L 53.5 118 L 50 116 L 46.5 118 L 48 115 L 45.5 113 L 48.5 113 Z"/>
+  </g>
+</svg>
